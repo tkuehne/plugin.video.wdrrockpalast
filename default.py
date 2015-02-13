@@ -81,7 +81,7 @@ def show_main_entry():
     response = urllib2.urlopen(req)
     link=response.read()
     response.close()
-    match_years=re.compile('<h2 .*?class="colored">(\d+)</a></h2>(.*?)<h2 ',re.DOTALL).findall(link)
+    match_years=re.compile('<h2 .*?class="colored">(\d+)</a></h2>(.*?)(?=<h2 )',re.DOTALL).findall(link)
     for year, block in match_years:    
         match=re.compile('<li class="teaserCont.*?<img src="(.*?)".*?/>.*?<a href="(.*?)".*?>(.*?)</a>',re.DOTALL).findall(block)
         for img,url,name in match:
@@ -98,7 +98,7 @@ def show_main_entry():
     response = urllib2.urlopen(req)
     link=response.read()
     response.close()
-    match_years=re.compile('<h2 .*?class="colored">(\d+)</a></h2>(.*?)<h2 ',re.DOTALL).findall(link)
+    match_years=re.compile('<h2 .*?class="colored">(\d+)</a></h2>(.*?)(?=<h2 )',re.DOTALL).findall(link)
     for year, block in match_years:
         match=re.compile('<li class="teaserCont.*?<img src="(.*?)".*?/>.*?<a href="(.*?)".*?>(.*?)</a>',re.DOTALL).findall(block)
     
